@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "com.rabbitmq:amqp-client:5.2.0"
+}
+
+mainClassName = 'App'
+
