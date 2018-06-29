@@ -28,9 +28,14 @@ public class Consumer {
                         e.printStackTrace();
                     }
                 }
+                try {
+                    channel.basicAck(envelope.getDeliveryTag(),false);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         };
 
-        channel.basicConsume(QUEUE_NAME,true,myConsumer);
+        channel.basicConsume(QUEUE_NAME,false,myConsumer);
     }
 }
