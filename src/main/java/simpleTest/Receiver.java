@@ -1,3 +1,5 @@
+package simpleTest;
+
 import com.rabbitmq.client.*;
 import com.rabbitmq.client.impl.ChannelManager;
 
