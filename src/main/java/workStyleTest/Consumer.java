@@ -37,5 +37,6 @@ public class Consumer {
         };
 
         channel.basicConsume(QUEUE_NAME,false,myConsumer);
+        channel.basicQos(1);
     }
 }
