@@ -1,4 +1,4 @@
-package workStyleTest;
+package workstyletest;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;

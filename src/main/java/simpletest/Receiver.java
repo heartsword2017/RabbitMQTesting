@@ -1,7 +1,6 @@
-package simpleTest;
+package simpletest;
 
 import com.rabbitmq.client.*;
-import com.rabbitmq.client.impl.ChannelManager;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
