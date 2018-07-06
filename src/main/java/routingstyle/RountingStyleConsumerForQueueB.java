@@ -15,10 +15,10 @@ public class RountingStyleConsumerForQueueB {
         connectionFactory.setHost("localhost");
         Connection connection = connectionFactory.newConnection();
         Channel channel = connection.createChannel();
-//        channel.exchangeDeclare(EXCHANGE_NAME, "direct"); not needed if exchange has been declared by producer already
+        channel.exchangeDeclare(EXCHANGE_NAME, "direct"); //not needed if exchange has been declared by producer already
         String randomQueueName = channel.queueDeclare().getQueue();
         channel.queueBind(randomQueueName, EXCHANGE_NAME, ROUTING_KEY_B);
-        com.rabbitmq.client.Consumer myConsumer = new DefaultConsumer(channel) {
+        Consumer myConsumer = new DefaultConsumer(channel) {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) {
                 String message = new String(body);

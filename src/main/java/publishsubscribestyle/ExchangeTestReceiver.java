@@ -17,7 +17,7 @@ public class ExchangeTestReceiver {
         channel.queueBind(queueName,"logs","Again,No need for a routing key of fanout type exchange!");
         System.out.println("Hey, I am just a random worker");
 
-        com.rabbitmq.client.Consumer myConsumer = new DefaultConsumer(channel){
+        Consumer myConsumer = new DefaultConsumer(channel){
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body){
                 String message = new String(body);
