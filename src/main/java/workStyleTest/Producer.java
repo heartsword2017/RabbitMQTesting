@@ -3,6 +3,7 @@ package workStyleTest;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.MessageProperties;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -14,10 +15,10 @@ public class Producer {
         factory.setHost("localhost");
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
-        channel.queueDeclare(QUEUE_NAME,false,false,false,null);
+        channel.queueDeclare(QUEUE_NAME,true,false,false,null);
         String message = "This task takes about 10 seconds ..........";
-        channel.basicPublish("",QUEUE_NAME,null,message.getBytes());
-        System.out.println("Xinjian!!!Congratz, your message has been sent!! What a amazing stuff");
+        channel.basicPublish("",QUEUE_NAME,MessageProperties.PERSISTENT_TEXT_PLAIN,message.getBytes());
+        System.out.println("Xinjian!!!Congratz, your message has been sent!! What an amazing stuff");
         channel.close();
         connection.close();
 
